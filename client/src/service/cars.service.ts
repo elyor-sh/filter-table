@@ -1,5 +1,5 @@
 import {createEffect} from "effector";
-import {httpGetCarsByFilter} from "../api";
+import {httpGetCarsByFilter, httpPostCar} from "../api";
 import {CommonRequestsQueryModel} from "../models/request/common-requests.model";
 import {CarsModelRequestsBody} from "../models/request/cars-requests.model";
 
@@ -21,3 +21,15 @@ export const fetchCarsService = createEffect(
             console.log(e)
         }
     })
+
+
+// Создание машины
+export const postCarService = async (params: CarsModelRequestsBody.post) => {
+    try {
+
+        await httpPostCar(params)
+
+    }catch (e) {
+        console.log(e)
+    }
+}

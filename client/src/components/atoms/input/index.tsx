@@ -5,10 +5,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 }
 
-const Input: React.FC<InputProps> = ({...props}) => {
+const Input: React.FC<InputProps> = ({className, ...props}) => {
     return (
         <input
-            className={classes.input}
+            className={`${classes.input} ${className ? className : ''}`}
             {...props}
         />
     );
