@@ -45,6 +45,7 @@ const CarsFilter = () => {
                 }
                 handleSubmit={handleSearchCars}
                 handleClear={handleClearCarsFilter}
+                disabledSearch={!filterParams.text}
             />
         </div>
     )
