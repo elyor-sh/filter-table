@@ -15,7 +15,7 @@ export const fetchCarsService = createEffect(
 
             const response = await httpGetCarsByFilter(query, params)
 
-            return response.data.items
+            return response.data
 
         } catch (e) {
             console.log(e)

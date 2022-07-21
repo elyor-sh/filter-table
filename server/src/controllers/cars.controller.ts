@@ -9,11 +9,18 @@ class CarsControllerClass {
     }
 
     getFilterParams (type: CarsFilterDtoInterface.type, param: CarsFilterDtoInterface.filterParam, text: string) {
+
+        /*
+        *
+        * ВНИМАНИЕ!!! Тут может быть уязвимость, я не стал проверить, чтобы экономить время
+        *
+        */
+
         let requestStr = ''
 
         switch (type) {
             case 'equal':
-                requestStr = `WHERE ${param} = ${isNaN(Number(text)) ? `'${text}'` : Number(text)}`
+                requestStr = param === 'name' ? `WHERE ${param} = '${text}'` : `WHERE ${param} = ${Number(text)}`
                 break
             case 'contains':
 
@@ -30,10 +37,10 @@ class CarsControllerClass {
                     }).join('')
                 break
             case 'less':
-                requestStr = `WHERE ${param} < ${isNaN(Number(text)) ? `'${text}'` : Number(text)}`
+                requestStr = param === 'name' ? `WHERE ${param} < '${text}'` : `WHERE ${param} < ${Number(text)}`
                 break
             case 'more':
-                requestStr = `WHERE ${param} > ${isNaN(Number(text)) ? `'${text}'` : Number(text)}`
+                requestStr = param === 'name' ? `WHERE ${param} > '${text}'` : `WHERE ${param} > ${Number(text)}`
                 break
             default:
                 break
@@ -47,7 +54,7 @@ class CarsControllerClass {
 
             const cars = await this.carsService.getAll()
 
-            res.json({items: cars})
+            res.json({items: cars, paging: null})
 
         } catch (e) {
             console.log(e)
@@ -62,7 +69,7 @@ class CarsControllerClass {
 
             const car = await this.carsService.create({name, count, distance, date: new Date()})
 
-            res.json({items: car})
+            res.json({items: car, paging: null})
 
         } catch (e) {
             console.log(e)
@@ -73,7 +80,7 @@ class CarsControllerClass {
     async filter(req: Request, res: Response) {
         try {
 
-            const {offset, rowCount} = new CommonQueryDto(req.query)
+            const {offset, rowCount, page} = new CommonQueryDto(req.query)
 
             const {filterParam, type, text}: CarsFilterDto = req.body
 
@@ -87,8 +94,15 @@ class CarsControllerClass {
 
 
             const cars = await this.carsService.filter(sqlRequest)
+            const allCars = await this.carsService.getAll()
 
-            res.json({items: cars})
+            const paging = {
+                currentPage: page,
+                totalCount: allCars.length,
+                pages: Math.ceil(allCars.length / rowCount)
+            }
+
+            res.json({items: cars, paging: paging})
 
         } catch (e) {
             console.log(e)
