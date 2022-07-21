@@ -1,0 +1,20 @@
+{
+  "name": "filter-table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && yarn install && yarn run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prElyor/filter-table.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prElyor/filter-table/issues"
+  },
+  "homepage": "https://github.com/prElyor/filter-table#readme"
+}
