@@ -1,0 +1,13 @@
+.btn {
+  border-radius: 0;
+  border: none;
+  background: #1F2936;
+  color: #ffffff;
+  padding: 10px 20px 11px;
+  cursor: pointer;
+  transition: .3s;
+  &:disabled, &:disabled:hover {
+    cursor: default;
+    background: #afafaf;
+  }
+}

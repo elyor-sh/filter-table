@@ -10,10 +10,10 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement>{
     options: IOptions[]
 }
 
-const Select: React.FC<SelectProps> = ({options, ...props}) => {
+const Select: React.FC<SelectProps> = ({options, className, ...props}) => {
     return (
         <select
-            className={classes.select}
+            className={`${classes.select} ${className ? className : ''}`}
             {...props}
         >
             {

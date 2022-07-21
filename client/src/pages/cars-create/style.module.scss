@@ -1,0 +1,22 @@
+.wrapper {
+  max-width: 900px;
+}
+
+.input {
+  width: 48%;
+}
+
+.cancelBtn {
+  margin-right: 10px;
+  background: #a1a1a1;
+  &:hover {
+    background: #ffa5a5;
+  }
+}
+
+.saveBtn {
+  background: #7377ff;
+  &:hover {
+    background: #58ffa5;
+  }
+}

@@ -3,6 +3,7 @@ import classes from './style.module.scss'
 import {drawPagination} from "./drawPagination";
 import {ArrowLeftIcon} from "../../assets/arrowLeftIcon";
 import {ArrowRightIcon} from "../../assets/arrowRightIcon";
+import PaginationRows from "./rows";
 
 interface PaginationProps {
     pages: number
@@ -45,7 +46,8 @@ const Pagination: React.FC<PaginationProps> = (
                     ?
                     <></>
                     :
-                    <div>
+                    <>
+                        <PaginationRows />
                         <button
                             className={`${classes.btn} ${activePage === 1 ? '' : classes.arrowIcon}`}
                             disabled={activePage === 1}
@@ -61,7 +63,7 @@ const Pagination: React.FC<PaginationProps> = (
                         >
                             <ArrowRightIcon />
                         </button>
-                    </div>
+                    </>
             }
         </div>
     );
