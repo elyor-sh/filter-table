@@ -3,5 +3,5 @@ export interface CarsEntity {
     name: string
     count: number
     distance: number
-
+    date: Date
 }
