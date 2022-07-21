@@ -1,5 +1,9 @@
 const getBasUrl = (): string => {
 
+    if(!process.env.REACT_APP_API_URL_DEV && !process.env.REACT_APP_API_URL_PROD){
+        throw new Error('Нет адрес сервера в конфиге!')
+    }
+
     if(process.env.REACT_APP_ENV === 'development'){
         return process.env.REACT_APP_API_URL_DEV!
     }
@@ -8,7 +12,7 @@ const getBasUrl = (): string => {
         return process.env.REACT_APP_API_URL_PROD!
     }
 
-    // если не передана переменная окружения то бросаем ошибку
+    // если не передана или не так как ожидаемая переменная окружения то бросаем ошибку
     throw new Error('Не передана переменная окружения')
 
 }
