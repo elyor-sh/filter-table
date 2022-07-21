@@ -1,8 +1,8 @@
 export class CarsCreateDto {
-    name: string
-    count: number
-    distance: number
-    date: Date
+    name: string = ''
+    count: number = 0
+    distance: number = 0
+    date: Date = new Date()
 }
 
 
