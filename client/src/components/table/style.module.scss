@@ -1,0 +1,40 @@
+.tableWrapper {
+
+}
+
+.table, .tr {
+  border: 1px solid #ECECEC;
+  color:  #4D4D4D;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-left: none;
+  border-right: none;
+}
+
+.tr {
+  border-left: none;
+  border-right: none;
+}
+
+.td {
+  padding: 30px 10px;
+  &:first-child{
+    border-left: none;
+  }
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.th {
+  padding: 6px 10px;
+}
+
+.thead {
+  background: #ECECEC;
+  color: #808080;
+  font-size: 12px;
+}

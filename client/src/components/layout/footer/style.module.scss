@@ -1,0 +1,16 @@
+
+.footer {
+  height: 60px;
+  width: 100%;
+  position: relative;
+
+  &__bg {
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    background: #1F2936;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
