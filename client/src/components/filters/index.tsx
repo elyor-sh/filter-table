@@ -10,9 +10,10 @@ interface FiltersProps {
     elements: IElementFilter[]
     handleSubmit: () => void
     handleClear: () => void
+    disabledSearch?: boolean
 }
 
-const Filters: React.FC<FiltersProps> = ({elements, handleSubmit, handleClear}) => {
+const Filters: React.FC<FiltersProps> = ({elements, handleSubmit, handleClear, disabledSearch}) => {
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLButtonElement>) => {
         if(e.key === 'Enter'){
@@ -39,11 +40,12 @@ const Filters: React.FC<FiltersProps> = ({elements, handleSubmit, handleClear}) 
                         className={classes.button}
                         onClick={handleSubmit}
                         onKeyPress={handleKeyPress}
+                        disabled={!!disabledSearch}
                     >
                         <SearchIcon />
                     </button>
                     <button
-                        className={classes.button}
+                        className={`${classes.button} ${classes.button__clear}`}
                         onClick={handleClear}
                     >
                         <ClearIcon />

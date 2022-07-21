@@ -1,23 +1,23 @@
 import React from "react";
 import {createEvent, createStore} from "effector";
+import {toast} from "react-toastify";
 import {CarsModel} from "../models/response/cars-response.model";
 import {fetchCarsService} from "../service/cars.service";
 import {CarsModelRequestsBody} from "../models/request/cars-requests.model";
-import {toast} from "react-toastify";
 
 interface ChangeEventParams {
     key: string
     value: string
 }
 
+// Создаем события
+export const handleChange = createEvent<ChangeEventParams>()
+export const handleClear = createEvent()
+
 // Массив машин
 export const $cars = createStore([] as CarsModel[])
     .on(fetchCarsService.doneData, (_, payload) => payload)
     .on(fetchCarsService.fail, (_, __) => [])
-
-// Создаем событие
-export const handleChange = createEvent<ChangeEventParams>()
-export const handleClear = createEvent()
 
 // Параметры для фильтрации
 export const $carFilterParams = createStore(
@@ -31,14 +31,18 @@ export const $carFilterParams = createStore(
         ...filter,
         [key]: value
     }))
-    .on(handleClear, () => ({
-        filterParam: 'name',
-        text: '',
-        type: 'equal'
-    }))
+
+    .on(handleClear, () => {
+
+        return {
+            filterParam: 'name',
+            text: '',
+            type: 'equal'
+        }
+    })
 
 
-//
+// При изменении поля записываем изменение в стор
 export const handleChangeCarsFilter =
     handleChange.prepend(
         (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => (
@@ -50,17 +54,17 @@ export const handleChangeCarsFilter =
     )
 
 // Очистить поля
-export const handleClearCarsFilter = async () => {
+export const handleClearCarsFilter = handleClear.prepend(() => {
+    (async () => {
+        await fetchCarsService(
+            {
+                query: {},
+                params: {}
+            }
+        )
+    })()
+})
 
-    handleClear.prepend(() => {})
-
-    await fetchCarsService(
-        {
-            query: {},
-            params: {}
-        }
-    )
-}
 
 // Фильтрация машин
 export const handleSearchCars = async () => {

@@ -5,6 +5,8 @@ import CarsFilter from "./filter";
 import {fetchCarsService} from "../../service/cars.service";
 import {CarsModel} from "../../models/response/cars-response.model";
 import {$cars} from "../../store/cars.store";
+import {Table} from "../../components/table";
+import {tableBodyCellsCars, tableHeadCellsCars} from "./options";
 
 const Cars = () => {
 
@@ -20,7 +22,11 @@ const Cars = () => {
     return (
         <div>
             <CarsFilter />
-            {JSON.stringify(cars, null, 2)}
+            <Table
+                data={cars}
+                headCells={tableHeadCellsCars}
+                rowCells={tableBodyCellsCars}
+            />
         </div>
     );
 };

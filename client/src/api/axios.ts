@@ -23,7 +23,7 @@ httpRequest.interceptors.response.use(
         return response;
     },
     (error) => {
-        toast.error(error?.response?.data?.message ? error?.response?.data?.message : 'Xatolik', {
+        toast.error(error?.response?.data?.message ? error?.response?.data?.message : 'Не определенная ошибка', {
             toastId: 'AuthResReqError'
         })
         return Promise.reject(error);
@@ -35,7 +35,7 @@ httpRequest.interceptors.request.use(
         return config;
     },
     (error) => {
-        toast.error(error?.response?.data?.message ? error?.response?.data?.message : 'Xatolik', {
+        toast.error(error?.response?.data?.message ? error?.response?.data?.message : 'Не определенная ошибка', {
             toastId: 'ReqError'
         })
         return Promise.reject(error);
