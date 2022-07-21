@@ -65,6 +65,7 @@ class CarsControllerClass {
             res.json({items: car})
 
         } catch (e) {
+            console.log(e)
             res.status(500).json(e)
         }
     }
