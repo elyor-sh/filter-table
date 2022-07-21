@@ -1,17 +1,5 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
+// Общие стили
 *, *::after, *::before {
   text-decoration: none;
   list-style: none;
@@ -30,4 +18,26 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+
+.d-f {
+  display: flex;
+}
+
+.a-i-c {
+  align-items: center;
+}
+
+.a-i-f-e {
+  align-items: flex-end;
+}
+
+.j-c-s-b {
+  justify-content: space-between;
+}
+
+.j-c-c {
+  justify-content: center;
+}
+
+
 
