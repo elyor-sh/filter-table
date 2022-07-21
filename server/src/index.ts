@@ -5,6 +5,7 @@ import * as path from 'path'
 
 import {PORT} from "./config"
 import {router as carsRouter} from './routes/cars.route'
+import {createTable} from "./database/create-table";
 
 const app = express()
 
@@ -29,6 +30,8 @@ app.get('*', (req: Request, res: Response) => {
 (
     async () => {
         try {
+
+            await createTable()
 
             await app.listen(PORT, () => console.log(`Server has been started in port = ${PORT}`))
 

@@ -1,7 +1,7 @@
 import {Pool} from 'pg'
 import {poolConfig} from "../config";
 
-const pool = new Pool(poolConfig)
+export const pool = new Pool(poolConfig)
 
 class Database {
 
