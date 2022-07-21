@@ -1,0 +1,27 @@
+.paginationContainer {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: #e0e0e0;
+  display: inline-block;
+  margin: 0 5px;
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.active {
+  background: #b9baff;
+}
+
+.arrowIcon {
+  background: #c1fdc3;
+}
