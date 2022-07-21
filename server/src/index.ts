@@ -13,10 +13,17 @@ app.use(cors())
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
+app.use(express.static(path.join(__dirname, '..', '..', 'client', 'build')))
 
 // routes
 app.use('/api/cars', carsRouter);
+
+
+app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'build', 'index.html'))
+});
+
+
 
 // Server start function
 (

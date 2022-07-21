@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production concurrently \"npx tsc\" \"node ./dist/index.js\"  \"npm run build:client\"",
+    "start": "cross-env NODE_ENV=production yarn run build && yarn run build:client && node ./dist/index.js",
     "dev": "cross-env NODE_ENV=development nodemon ./src/index.ts",
-    "build": "npx tsc",
-    "build:client":  "cd ../client && npm run build:prod"
+    "build": "cross-env NODE_ENV=production npx tsc",
+    "build:client":  "cd ../client && yarn install && yarn run build:prod"
   },
   "keywords": [],
   "author": "",
