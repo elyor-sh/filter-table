@@ -8,6 +8,16 @@
 
 #### Если хотите запустить локально, то клоинруйте приложение, и запольните файл .env в серверной части, установите зависимости, запускайте
 
+##### env файл для режима разработки
+
+    DB_USER_DEV=
+    DB_HOST_DEV=
+    DB_DATABASE_DEV=
+    DB_PASSWORD_DEV=
+    DB_PORT_DEV=
+
+
+
 1
 
     git clone https://github.com/prElyor/filter-table.git
