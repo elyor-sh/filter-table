@@ -1,2 +1,7 @@
 server/.env
 .idea
+
+# env files
+.env
+.env.*
+!.env.example
